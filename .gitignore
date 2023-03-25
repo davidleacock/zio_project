@@ -3,3 +3,6 @@
 .vscode/settings.json
 .metals/metals.lock.db
 .metals/metals.mv.db
+.bloop/
+project/
+target/

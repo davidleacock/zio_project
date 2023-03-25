@@ -10,6 +10,6 @@ To run application
 
 two available endpoints for user
 
-curl -i http://localhost:8080/user -d '{"id": "1234", "name":"hank", "email":"hank@stricklandpropane.com"}'
+Add User: `curl -i http://localhost:8080/user -d '{"id": "1234", "name":"hank", "email":"hank@stricklandpropane.com"}'`
 
-curl -GET -w '\n' http://localhost:8080/user/1234
+Get User: `curl -GET -w '\n' http://localhost:8080/user/1234`

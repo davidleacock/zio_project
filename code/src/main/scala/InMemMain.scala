@@ -1,15 +1,13 @@
-import http.HttpRoutes
+import _root_.http.HttpRoutes
 import config.ServerConfig
-import config.DbConfig
-import zio._
-import http._
-import repo.impl.PostgresUserUserRepository
-import zio.sql.ConnectionPool
+import repo.impl.InMemoryUserRepository
+import zio.http.Server
+import zio.{Console, ZIO, ZIOAppDefault, ZLayer, http}
 
-object Main extends ZIOAppDefault {
+object InMemMain extends ZIOAppDefault {
 
   private val main: ZIO[Any, Throwable, Unit] = for {
-    _ <- Console.printLine("Running LIVE version of application....")
+    _ <- Console.printLine("Running IN-MEMORY version of application....")
     _ <- Server
       .serve(HttpRoutes.app)
       .provide(
@@ -17,10 +15,7 @@ object Main extends ZIOAppDefault {
         ZLayer.fromZIO(zio.config.getConfig[ServerConfig])
           .flatMap(config => zio.http.ServerConfig.live(http.ServerConfig.default.port(config.get.port))),
         Server.live,
-        PostgresUserUserRepository.live,
-        DbConfig.layer,
-        ConnectionPool.live,
-        DbConfig.connectionPoolConfig
+        InMemoryUserRepository.live
       )
   } yield ()
 

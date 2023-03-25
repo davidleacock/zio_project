@@ -1,9 +1,12 @@
 # zio_project
 
+Current status:  Simple User model, postgres database and two REST endpoints
+
+
 To run application
 
-1) docker-compose up
-2) run Main
+1) `docker-compose up` in terminal
+2) run `Main` from either command line or IDE
 
 two available endpoints for user
 

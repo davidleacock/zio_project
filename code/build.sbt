@@ -1,4 +1,3 @@
-
 // The simplest possible sbt build file is just one line:
 
 scalaVersion := "2.13.8"
@@ -20,7 +19,6 @@ version := "1.0"
 // Note, it's not required for you to define these three settings. These are
 // mostly only necessary if you intend to publish your library's binaries on a
 // place like Sonatype.
-
 
 // Want to use a published library in your project?
 // You can define other libraries as dependencies in your build like this:
@@ -76,7 +74,6 @@ libraryDependencies += "org.scala-lang.modules" %% "scala-parser-combinators" % 
 // To learn more about multi-project builds, head over to the official sbt
 // documentation at http://www.scala-sbt.org/documentation.html
 
-
 ThisBuild / version := "0.1.0-SNAPSHOT"
 
 ThisBuild / scalaVersion := "2.13.10"
@@ -88,6 +85,8 @@ ThisBuild / scalaVersion := "2.13.10"
 
 lazy val zioVersion = "2.0.7"
 val zioSqlVersion = "0.1.1"
+val zioConfigVersion = "3.0.7"
+val zioHttpVersion = "0.0.4"
 
 val testcontainersVersion = "1.16.2"
 val testcontainersScalaVersion = "0.39.12"
@@ -95,11 +94,16 @@ val testcontainersScalaVersion = "0.39.12"
 libraryDependencies ++= Seq(
   "dev.zio" %% "zio" % zioVersion,
   "dev.zio" %% "zio-test" % zioVersion,
-  "io.d11" %% "zhttp" % "2.0.0-RC10",
+  "dev.zio" %% "zio-http" % zioHttpVersion,
   "dev.zio" %% "zio-json" % "0.3.0-RC8",
   "dev.zio" %% "zio-streams" % zioVersion,
   "dev.zio" %% "zio-sql-postgres" % zioSqlVersion,
   "dev.zio" %% "zio-direct" % "1.0.0-RC6",
+
+  // config
+  "dev.zio" %% "zio-config" % zioConfigVersion,
+  "dev.zio" %% "zio-config-typesafe" % zioConfigVersion,
+  "dev.zio" %% "zio-config-magnolia" % zioConfigVersion,
 
 // test dependencies
   "dev.zio" %% "zio-test" % zioVersion % Test,

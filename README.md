@@ -1,5 +1,9 @@
 # zio_project
 
+
+Design documentation and diagrams can be found in the resource/design folder
+
+
 Current status:  Simple User model, postgres database and two REST endpoints
 
 

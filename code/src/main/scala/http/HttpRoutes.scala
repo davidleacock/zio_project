@@ -22,7 +22,7 @@ object HttpRoutes {
             case Left(error) => Response.text(error.getMessage)
           }
 
-      case req @ (Method.POST -> !! / "user") =>
+      case req @ Method.POST -> !! / "user" =>
         (
           for {
             user <- req
@@ -38,8 +38,8 @@ object HttpRoutes {
             _ <- UserRepository.put(user.id, user.name, user.email)
           } yield ()
         ).either.map {
-          case Right(_)       => Response.status(Status.Created)
-          case Left(appError) => Response.status(Status.BadRequest)
+          case Right(_) => Response.status(Status.Created)
+          case Left(_)  => Response.status(Status.BadRequest)
         }
     }
 }

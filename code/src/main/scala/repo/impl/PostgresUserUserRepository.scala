@@ -55,5 +55,5 @@ final class PostgresUserUserRepository(connectionPool: ConnectionPool)
 
 object PostgresUserUserRepository {
   val live: ZLayer[ConnectionPool, Nothing, UserRepository] =
-    ZLayer.fromFunction(connectionPool => new PostgresUserUserRepository(connectionPool))
+    ZLayer.fromFunction { connectionPool: ConnectionPool => new PostgresUserUserRepository(connectionPool) }
 }
